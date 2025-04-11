@@ -18,9 +18,13 @@ class Rectangle:
         pg.draw.rect(self.surface, self.color, self.surface.get_rect(), border_radius=self.roundness)
 
         self.surface = pg.transform.rotate(self.surface,self.angel)
+        self.surface.set_alpha(self.opacity)
  
         if self.show:
+            for shape in self.shapes:
+                shape.tick(self.surface)
             screen.blit(self.surface, self.position)
+            
 
     
     def functions(self):
@@ -39,6 +43,8 @@ class Rectangle:
         self.event_catchers = []
         self.angel = 0
         self.show = True
+        self.opacity = 255
+        self.shapes = []
         
     def event_catcher(self,event):
         """Every time an event is triggered it gets redirected here"""
