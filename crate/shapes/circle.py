@@ -1,8 +1,8 @@
 import pygame as pg
 from ..window import Window
 
-class Label:
-    """A Label to put on the display"""
+class Circle:
+    """A Circle to put on the display"""
     def __init__(self,master):
 
         self.master = master
@@ -13,13 +13,10 @@ class Label:
     def tick(self,screen):
         """Every frame of the application you get a signal and the root"""
 
-
-        self.text_font = pg.font.Font(self.font_file_path,self.font_size)
-        self.surface = self.text_font.render(self.text,True,self.font_color,bgcolor=self.color)
+        self.surface = pg.Surface((self.size,self.size),pg.SRCALPHA)
         
-
-        self.surface = pg.transform.rotate(self.surface,self.angel)
-        self.surface = pg.transform.gaussian_blur(self.surface,self.blur)
+        pg.draw.circle(self.surface, self.color, self.position, self.size/2)#
+        
         self.surface.set_alpha(self.opacity)
  
         if self.show:
@@ -38,20 +35,14 @@ class Label:
     def initialize_variables(self):
         """Defines Variables"""
 
-        self.size = (50,50)
         self.position = (0, 0)
-        self.color = None
-        self.font_color = "#ffffff"
+        self.roundness = 0
+        self.color = (110, 110, 110 )
         self.event_catchers = []
-        self.angel = 0
-        self.blur = 0
+        self.size = 20
         self.show = True
         self.opacity = 255
         self.shapes = []
-        self.font_size = 48
-        self.text = "Hello Crate!"
-        self.font_file_path = None
-        
         
     def event_catcher(self,event):
         """Every time an event is triggered it gets redirected here"""

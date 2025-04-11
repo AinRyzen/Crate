@@ -19,4 +19,6 @@ from .shapes.shape import Shape
 from .shapes.rectangle import Rectangle
 from .shapes.rectangle import Rectangle as Rect
 
+from .shapes.circle import Circle
+
 from .shapes.label import Label
