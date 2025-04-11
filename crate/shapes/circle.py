@@ -15,7 +15,9 @@ class Circle:
 
         self.surface = pg.Surface((self.size,self.size),pg.SRCALPHA)
         
-        pg.draw.circle(self.surface, self.color, self.position, self.size/2)#
+        pg.draw.circle(self.surface, self.color, (self.size // 2, self.size // 2), self.size // 2)
+
+
         
         self.surface.set_alpha(self.opacity)
  
@@ -39,7 +41,7 @@ class Circle:
         self.roundness = 0
         self.color = (110, 110, 110 )
         self.event_catchers = []
-        self.size = 20
+        self.size = 50
         self.show = True
         self.opacity = 255
         self.shapes = []
