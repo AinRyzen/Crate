@@ -22,3 +22,9 @@ from .shapes.rectangle import Rectangle as Rect
 from .shapes.circle import Circle
 
 from .shapes.label import Label
+
+from .shapes.image import Image
+
+from .shapes.line import Line
+
+from .shapes.surface import Surface
