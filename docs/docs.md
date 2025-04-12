@@ -3,6 +3,8 @@
 
 ## Quick Explanation
 
+## pip install
+
 ## Import
 
 ## Window
