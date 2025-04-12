@@ -1,5 +1,6 @@
 # Crate
 "Crate" your own GUI
+Create your own GUI Library in Python
 
 ## What to use it for
 Crate was built on Pygame, which is a game engine in Python. I started this project because I was getting bored with Tkinter and CustomTkinter. The scrollbar was terrible, and there were a lot of problems that I couldn't understand. So, I wanted to build my own GUI library, but I didn’t have any low-level computing knowledge.
