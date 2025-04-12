@@ -1,13 +1,15 @@
 # Crate
-"Crate" your own GUI
+"Crate" Your Own GUI  
 Create your own GUI Library in Python
 
-## What to use it for
-Crate was built on Pygame, which is a game engine in Python. I started this project because I was getting bored with Tkinter and CustomTkinter. The scrollbar was terrible, and there were a lot of problems that I couldn't understand. So, I wanted to build my own GUI library, but I didn’t have any low-level computing knowledge.
+## What to Use It For
+Crate was built using Pygame, which is a game engine in Python. I started this project because I was getting bored with Tkinter and CustomTkinter. The scrollbar was terrible, and there were a lot of problems that I couldn't understand. So, I wanted to build my own GUI library, but I didn’t have much low-level computing knowledge.
 
-That’s when the idea hit me — why not create it in Pygame? But Crate isn't just another GUI library; it’s a solid base for a GUI library. With Crate, I wanted to give the users of this module as much freedom as possible to create their own widgets and everything.
+That’s when the idea hit me — why not create it using Pygame? But Crate isn't just another GUI library; it’s a solid foundation for building a GUI library. With Crate, I wanted to give users as much freedom as possible to create their own widgets and customize everything.
 
-Since I am only experienced with Tkinter and CustomTkinter, the syntax and philosophy behind Crate closely resemble Tkinter. This makes it extra easy for people with similar backgrounds to get started.
+Since I am mostly experienced with Tkinter and CustomTkinter, the syntax and philosophy behind Crate closely resemble Tkinter. This makes it extra easy for people with similar backgrounds to get started.
 
-The docs are a work in progress, but I have provided examples for everything:
+The documentation is still a work in progress, but I have provided examples for everything:
 [Crate Examples on GitHub](https://github.com/AinRyzen/Crate/tree/main/examples)
+
+I haven't figured out how to use pip yet, so if you want to test it, download the Crate folder and place it in your working directory.
