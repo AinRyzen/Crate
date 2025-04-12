@@ -39,7 +39,6 @@ class Image:
 
         self.size = (50,50)
         self.position = (0, 0)
-        self.color = (110, 110, 110 )
         self.event_catchers = []
         self.angel = 0
         self.show = True

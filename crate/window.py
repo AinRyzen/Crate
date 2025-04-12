@@ -32,6 +32,7 @@ class Window:
         self.running = True # As long as this is true the window continues to run
         self.shapes : List[Shape] = [] # A list of Classes called shapes
         self.ticks = [] # A list of function that are executed every tick
+        self.event_catchers = [] # A list of functions that get executed when a event is caught
         
         # Internal
         self.previous_title_bar = True

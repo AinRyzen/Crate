@@ -38,7 +38,6 @@ class Circle:
         """Defines Variables"""
 
         self.position = (0, 0)
-        self.roundness = 0
         self.color = (110, 110, 110 )
         self.event_catchers = []
         self.size = 50
