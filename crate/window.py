@@ -23,7 +23,7 @@ class Window:
         
         # Cosmetic
         self.color = "green" # Background Color
-        self.position = (100,100)
+        self.position = (ctypes.windll.user32.GetSystemMetrics(0) // 2 - self.size[0] // 2, ctypes.windll.user32.GetSystemMetrics(1) // 2 - self.size[1] // 2)
         self.title = "Crate Window" # Window title
         self.closeable = True # Decide if window is closeable
         self.fps = 120 # At witch fps is the window looked
