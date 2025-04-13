@@ -19,7 +19,7 @@ class Label:
         
 
         self.surface = pg.transform.rotate(self.surface,self.angel)
-        self.surface = pg.transform.gaussian_blur(self.surface,self.blur)
+        if self.blur > 0:self.surface = pg.transform.gaussian_blur(self.surface,self.blur)
         self.surface.set_alpha(self.opacity)
  
         if self.show:
