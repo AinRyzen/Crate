@@ -10,8 +10,9 @@ class Window:
     
     """Creates a crate window"""
     
-    def __init__(self,title_bar):
+    def __init__(self,title_bar=False,size=(500,500)):
         self.title_bar = title_bar
+        self.size = size
         
         self.initialize_variables()
         
@@ -22,7 +23,6 @@ class Window:
         
         # Cosmetic
         self.color = "green" # Background Color
-        self.size = (500,500) # Window size
         self.position = (100,100)
         self.title = "Crate Window" # Window title
         self.closeable = True # Decide if window is closeable
@@ -48,11 +48,8 @@ class Window:
         
         while self.running:
             
-            self.screen.fill(self.color) 
+            self.screen.fill(self.color)
             # Constantly overwrite the screen with your color
-            
-            if not pg.display.get_window_size() == self.size:
-                self.reconfigure_window()
 
             # Updates the window size
             
@@ -76,6 +73,9 @@ class Window:
                 
             pg.display.flip()
             # updates the screen to show all the drawn content
+            
+            self.reconfigure_window()
+            # updates the window size and position constantly
             
             self.clock.tick(self.fps)
             # limits FPS to self.fps
