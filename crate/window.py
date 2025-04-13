@@ -2,6 +2,7 @@
 
 import pygame as pg
 from typing import List
+import ctypes
 
 from .shapes.shape import Shape
 
@@ -9,7 +10,8 @@ class Window:
     
     """Creates a crate window"""
     
-    def __init__(self):
+    def __init__(self,title_bar):
+        self.title_bar = title_bar
         
         self.initialize_variables()
         
@@ -21,12 +23,12 @@ class Window:
         # Cosmetic
         self.color = "green" # Background Color
         self.size = (500,500) # Window size
+        self.position = (100,100)
         self.title = "Crate Window" # Window title
         self.closeable = True # Decide if window is closeable
         self.fps = 120 # At witch fps is the window looked
         self.allow_screensaver = True # Decides if screensaver can be active while the window is open
         self.window_icon = None
-        self.title_bar = True
         
         # Important
         self.running = True # As long as this is true the window continues to run
@@ -35,9 +37,11 @@ class Window:
         self.event_catchers = [] # A list of functions that get executed when a event is caught
         
         # Internal
-        self.previous_title_bar = True
-        self.screen = pg.display.set_mode(self.size) # Create the screen
+        if self.title_bar:self.screen = pg.display.set_mode(self.size) # Create the screen
+        else: self.screen = pg.display.set_mode(self.size,pg.NOFRAME) # Create the screen#
+        
         self.clock = pg.time.Clock() # Create a clock to later look the fps
+        self.hwnd = pg.display.get_wm_info()['window'] # Gets the window
          
     def loop(self): # Run by the user
         """Starts the window loop"""
@@ -48,18 +52,7 @@ class Window:
             # Constantly overwrite the screen with your color
             
             if not pg.display.get_window_size() == self.size:
-                self.screen = pg.display.set_mode(self.size)
-
-            if not self.title_bar == self.previous_title_bar:
-                if self.title_bar is False:
-
-                    if self.title_bar is False:
-                        self.screen = pg.display.set_mode(self.size,pg.NOFRAME)
-                        self.previous_title_bar = self.title_bar
-
-                    elif self.title_bar is True:
-                        self.screen = pg.display.set_mode(self.size)
-                        self.previous_title_bar = self.title_bar
+                self.reconfigure_window()
 
             # Updates the window size
             
@@ -86,6 +79,10 @@ class Window:
             
             self.clock.tick(self.fps)
             # limits FPS to self.fps
+            
+    def reconfigure_window(self):
+        """Moves The window"""
+        ctypes.windll.user32.MoveWindow(self.hwnd, self.position[0], self.position[1], self.size[0],self.size[1], True)
                       
     def functions(self):
         """Runs Standalone functions"""
