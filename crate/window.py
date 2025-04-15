@@ -83,7 +83,12 @@ class Window:
     def reconfigure_window(self):
         """Moves The window"""
         ctypes.windll.user32.MoveWindow(self.hwnd, self.position[0], self.position[1], self.size[0],self.size[1], True)
-                      
+
+    def centre_window(self):
+        """Centers The widow"""
+        self.position = (ctypes.windll.user32.GetSystemMetrics(0) // 2 - self.size[0] // 2, ctypes.windll.user32.GetSystemMetrics(1) // 2 - self.size[1] // 2)
+
+            
     def functions(self):
         """Runs Standalone functions"""
         
