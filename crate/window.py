@@ -10,7 +10,7 @@ class Window:
     
     """Creates a crate window"""
     
-    def __init__(self,title_bar=False,size=(500,500)):
+    def __init__(self,title_bar=True,size=(500,500)):
         self.title_bar = title_bar
         self.size = size
         
