@@ -1,4 +1,4 @@
-import pygame as pg
+from ..modules import pygame as pg
 from ..window import Window
 
 class Circle:
