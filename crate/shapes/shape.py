@@ -1,5 +1,5 @@
+import pygame as pg
 
-from ..modules import pygame as pg
 class Shape:
     """A Shape to put on the display"""
     def __init__(self,master):

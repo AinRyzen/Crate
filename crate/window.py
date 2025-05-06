@@ -1,6 +1,6 @@
 # Imports
 
-from .modules import pygame as pg
+import pygame as pg
 from typing import List
 import ctypes
 

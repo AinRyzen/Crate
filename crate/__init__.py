@@ -4,7 +4,7 @@
 #
 
 # Imports
-from .modules import pygame as pg
+import pygame as pg
 
 pg.init()
 
