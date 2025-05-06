@@ -39,6 +39,8 @@ class Window:
         # Internal
         if self.title_bar:self.screen = pg.display.set_mode(self.size) # Create the screen
         else: self.screen = pg.display.set_mode(self.size,pg.NOFRAME) # Create the screen#
+        self._ignore_next_move_event = False # Prevents reacting to our own MoveWindow() call in the next frame
+        self._should_update_window_position = False # Tells the system to update the window's position in the next frame
         
         self.clock = pg.time.Clock() # Create a clock to later look the fps
         self.hwnd = pg.display.get_wm_info()['window'] # Gets the window
@@ -58,7 +60,16 @@ class Window:
                 if event.type == pg.QUIT and self.closeable:
                     # Closes the window if X clicked
                     self.running = False
-
+                    
+                if event.type == pg.WINDOWMOVED:
+                    if self._ignore_next_move_event:
+                        # This move was triggered by us, not the user — ignore it
+                        self._ignore_next_move_event = False
+                    else:
+                        # User moved the window — update our internal position
+                        new_pos = (event.dict["x"], event.dict["y"])
+                        if new_pos != self.position:
+                            self.position = new_pos
                     
                 for shape in self.shapes:
                     # passes the event to the shapes
@@ -81,12 +92,28 @@ class Window:
             # limits FPS to self.fps
             
     def reconfigure_window(self):
-        """Moves The window"""
-        ctypes.windll.user32.MoveWindow(self.hwnd, self.position[0], self.position[1], self.size[0],self.size[1], True)
+        """Moves the window only when a manual position update was requested"""
+        if self._should_update_window_position:
+            self._ignore_next_move_event = True  # Set to ignore the WINDOWMOVED event triggered by this
+            ctypes.windll.user32.MoveWindow(
+                self.hwnd,
+                self.position[0],
+                self.position[1],
+                self.size[0],
+                self.size[1],
+                True
+            )
+            self._should_update_window_position = False  # Reset so it doesn't keep moving
+
 
     def centre_window(self):
-        """Centers The widow"""
-        self.position = (ctypes.windll.user32.GetSystemMetrics(0) // 2 - self.size[0] // 2, ctypes.windll.user32.GetSystemMetrics(1) // 2 - self.size[1] // 2)
+        """Centers the window on the screen and schedules a one-time move"""
+        self.position = (
+            ctypes.windll.user32.GetSystemMetrics(0) // 2 - self.size[0] // 2,
+            ctypes.windll.user32.GetSystemMetrics(1) // 2 - self.size[1] // 2
+        )
+        self._should_update_window_position = True  # Request window movement
+
 
             
     def functions(self):
