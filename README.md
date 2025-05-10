@@ -9,7 +9,8 @@ That’s when the idea hit me — why not create it using Pygame? But Crate isn'
 
 Since I am mostly experienced with Tkinter and CustomTkinter, the syntax and philosophy behind Crate closely resemble Tkinter. This makes it extra easy for people with similar backgrounds to get started.
 
-The documentation is still a work in progress, but I have provided examples for everything:
-[Crate Examples on GitHub](https://github.com/AinRyzen/Crate/tree/main/examples)
+The documentation is now available:
+[Crate Docs on GitHub](https://github.com/AinRyzen/Crate/tree/main/docs)
+[Crate Examples on GitHub](https://github.com/AinRyzen/Crate/tree/main/docs)
 
 I haven't figured out how to use pip yet, so if you want to test it, download the Crate folder and place it in your working directory.
